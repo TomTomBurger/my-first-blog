@@ -26,7 +26,11 @@
     <tbody>
       {% for form in formset %}
       <tr>
-        <td><a class="btn btn_remove" href="{% url 'member_remove' pk=form.id.value %}"><i class="bi bi-x-square"></i></a></td>
+        {% if not forloop.last %}
+          <td><a class="btn btn_remove" href="{% url 'member_remove' pk=form.id.value %}"><i class="bi bi-x-square"></i></a></td>
+        {% else %}
+          <td></td>
+        {% endif %}
         <td class="hidden">{{ form.id }}</td>
         <td>{{ form.full_name }}</td>
         <td>{{ form.group }}</td>

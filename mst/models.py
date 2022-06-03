@@ -1,7 +1,7 @@
 from django.db import models
 
 class Group(models.Model):
-    code = models.IntegerField(primary_key=True)
+    code = models.CharField(max_length=15, primary_key=True)
     name = models.CharField('グループ名', max_length=30)
 
     def __str__(self):
