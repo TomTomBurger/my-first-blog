@@ -1,0 +1,56 @@
+
+{% load static %}
+
+<form id="members_form" method="post">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.0/font/bootstrap-icons.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <link rel="stylesheet" href="{% static 'css/mst.css' %}">      
+  <title>SamplePage</title>
+  {% csrf_token %}
+  {{ formset.management_form }}    
+
+  <div class="page-header">
+    <h1><a href="/">MemberList</a></h1>
+  </div>    
+
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Del</th>
+        <th class="hidden" scope="col">ID</th>
+        <th scope="col">名前</th>
+        <th scope="col">グループ</th>
+        <th scope="col">権限A</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for form in formset %}
+      <tr>
+        <td><a class="btn btn_remove" href="{% url 'member_remove' pk=form.id.value %}"><i class="bi bi-x-square"></i></a></td>
+        <td class="hidden">{{ form.id }}</td>
+        <td>{{ form.full_name }}</td>
+        <td>{{ form.group }}</td>
+        <td>{{ form.auth }}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <div>
+    <button class="btn btn-primary" type="submit">更新</button>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script>
+    $(function(){
+        $(".btn_remove").click(function(){
+            if(confirm("削除しますか？")){
+                //yesの処理（何もぜず進む）
+            }else{
+                //cancelの処理
+                return false;
+            }
+        });
+    })
+  </script>
+
+</form>

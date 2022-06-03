@@ -1,0 +1,37 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <form method="POST" class="account-form">{% csrf_token %}
+        {{ form.as_table }}
+        <button type="submit" class="save btn btn-default">Save</button>
+    </form>
+    {% for account in  accounts %}
+    <div class="account">        
+        <p>
+            {% if user.is_authenticated %}
+                <a class="btn_edit btn btn-default" href="{% url 'account_update' pk=account.pk %}"><span class="glyphicon glyphicon-pencil"></span></a>
+                <a class="btn_remove btn btn-default" href="{% url 'account_remove' pk=account.pk %}"><span class="glyphicon glyphicon-remove"></span></a>
+            {% endif %}
+            <input type="text" id="cd" name="cd" requiredminlength="1" maxlength="3" size="9" value="{{ account.cd }}">
+            <input type="text" id="name" name="name" requiredminlength="0" maxlength="10" size="9" value="{{ account.name }}">
+            <!-- {{ account.cd|linebreaksbr }}
+            {{ account.name|linebreaksbr }} -->
+        </p>
+    </div>
+    {% endfor %}
+{% endblock content %}
+
+{% block script %}
+<script>
+    $(function(){
+        $(".btn_remove").click(function(){
+            if(confirm("削除しますか？")){
+                //yesの処理（何もぜず進む）
+            }else{
+                //cancelの処理
+                return false;
+            }
+        });
+    })
+</script>
+{% endblock %}

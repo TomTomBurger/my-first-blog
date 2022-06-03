@@ -1,0 +1,10 @@
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    <form method="post">
+        {{ formset }}
+        <div>
+            <button class="btn btn-warning" type="submit">変更</button>
+        </div>
+  </form>
+{% endblock %}

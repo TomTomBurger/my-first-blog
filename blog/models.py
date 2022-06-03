@@ -33,3 +33,23 @@ class Comment(models.Model):
 
     def __str__(self):
         return self.text
+
+#Add Origin Contents
+class Account(models.Model):
+    cd = models.IntegerField()
+    name = models.CharField(max_length=20)
+
+    def update(self, new_name):
+        self.name = new_name
+        self.save()
+
+    def __str__(self):
+        return self.name
+
+# class Member(models.Model):
+#     cd = models.IntegerField()
+#     name = models.CharField('名前', max_length=30)
+#     auth = models.BooleanField(
+#         '権限',
+#          default=False,
+#     )

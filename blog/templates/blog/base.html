@@ -13,6 +13,7 @@
                 <a href="{% url 'post_new' %}" class="top-menu"><span class="glyphicon glyphicon-plus"></span></a>
                 <a href="{% url 'post_draft_list' %}" class="top-menu" data-0='post_draft_list'><span class="glyphicon glyphicon-edit"></span></a>
                 <p class="top-menu">Hello {{ user.username }} <small>(<a href="{% url 'logout' %}">Log out</a>)</small></p>
+                <p class="top-menu"><a href="{% url 'accountlist' %}">members!</a></p>
             {% else %}
                 <a href="{% url 'login' %}" class="top-menu"><span class="glyphicon glyphicon-Lock"></span></a>
             {% endif %}
@@ -21,9 +22,12 @@
         <div class="content container">
             <div class="row">
                 <div class="col-md-8">
-                {% block content %}
-                {% endblock %}
+                    {% block content %}
+                    {% endblock %}              
                 </div>
+                <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+                {% block script %}
+                {% endblock %}                  
             </div>
         </div>
     </body>
