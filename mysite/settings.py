@@ -40,7 +40,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'blog.apps.BlogConfig',
     'extra_views',
-    'widget_tweaks',
     'mst',
 ]
 
