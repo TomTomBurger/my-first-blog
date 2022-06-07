@@ -5,7 +5,7 @@ class Group(models.Model):
     name = models.CharField('グループ名', max_length=30)
 
     def __str__(self):
-        return self.code
+        return self.name
 
 class Member(models.Model):
 

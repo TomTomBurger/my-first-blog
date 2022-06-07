@@ -41,10 +41,12 @@
   </table>
   <div>
     <button class="btn btn-primary" type="submit">更新</button>
+    <button class="btn btn-light" type="submit"><a href="{% url 'member_export' %}">CSV</a></button>
   </div>
 
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script>
+    $('input:visible').first().focus();
     $(function(){
         $(".btn_remove").click(function(){
             if(confirm("削除しますか？")){
@@ -57,4 +59,9 @@
     })
   </script>
 
+</form>
+
+<form action="{% url 'member_pdf' %}" method="post" target="_blank">
+  {% csrf_token %}
+  <p style='text-align: center;'><input type='submit' value="PDF作成"></p>
 </form>
