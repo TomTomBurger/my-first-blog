@@ -56,7 +56,8 @@ def member_pdf(request):
     response['Content-Disposition'] = 'filename=' + pdf_name
     # response['Content-Disposition'] = 'attachment; filename=' + pdf_name
 
-    font_url = r'./mst/static/fonts/MSMincho/msmincho.ttc'
+    font_url = r'/home/sakai/sakai.pythonanywhere.com/mst/static/fonts/MSMincho\msmincho.ttc'
+    # font_url = r'./mst/static/fonts/MSMincho/msmincho.ttc'
     pdfmetrics.registerFont(TTFont("msmincho", font_url))
     # pdfmetrics.registerFont(cidfonts.UnicodeCIDFont("HeiseiMin-W3"))
     
